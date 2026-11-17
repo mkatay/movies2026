@@ -11,6 +11,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 const myrouter=createBrowserRouter([
   {element:<Header/>,
     children:[
+
+      
       {path:'/',element:<Home />},
       {path:'/movies',element:<Movies/>},
       {path:'/tv',element:<TVShows/>},
