@@ -1,22 +1,21 @@
 import React from 'react'
-import { img_300 } from '../utils'
+import { getVote, img_300 } from '../utils'
+import { Rating } from './Rating'
 
-export const MediaCard = ({media}) => {
+export const MediaCard = ({media,type}) => {
   return (
    <>
-       {/* <div>{media.title}</div>
-       <div>{media.original_title}</div> 
-       <img src={img_300+media.poster_path} alt={media.title} />*/}
+      
        <div className="card w-full bg-gray-300  shadow-sm text-gray-800">
             <figure>
-                <img src={img_300+media.poster_path} alt={media.title} />
+                <img src={media.poster_path && img_300+media.poster_path || 'noImage.jpg'} alt={media.title} />
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{media.title || media.name }</h2>
-                <p className='pt-2 flex justify-between'> 
-                    <span>{media.media_type}</span> 
+                <div className='pt-2 flex justify-between'> 
+                    <span>{media.media_type || (type!='trending' && <Rating vote={media.vote_average}/>)}</span> 
                     <span>{media.release_date || media.first_air_date}</span>
-                </p>
+                </div>
             </div>
         </div>
 </>
