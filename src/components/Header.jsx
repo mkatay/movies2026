@@ -11,7 +11,7 @@ const navLinkClass = ({ isActive }) =>
   `transition-colors hover:text-red-400 ${isActive ? "text-red-500 font-semibold" : "text-gray-300" }`//transition-colors: színátmenetes animációt tesz a színváltozásokra.
 
   return (
-    <div>
+    <div className='min-h-screen max-w-350 mx-auto bg-gray-800'>
         <header className="bg-gray-950 text-white shadow-lg">
             <nav className="max-w-8xl mx-auto px-6">
 
@@ -50,8 +50,7 @@ const navLinkClass = ({ isActive }) =>
             </nav>
         </header>
 
-        <main className="
-         mx-auto pt-4">
+        <main className="mx-auto pt-4  ">
           <Outlet />
         </main>
 

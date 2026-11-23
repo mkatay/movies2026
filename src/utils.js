@@ -24,12 +24,12 @@ export const getTVShows = async (page = 1) => {
     const response = await api.get("/discover/tv", {params: {page} });
     return response.data.results;
 }*/
-export const getTrending = async () => {
-    const response = await api.get("/trending/all/week");
+export const getTrending = async (page=1) => {
+    const response = await api.get("/trending/all/week", {params: {page} });
     return response.data.results;
 };
 export const getTV=async ()=>{
-    const response=await api.get("/discover/tv")
+    const response=await api.get("/discover/tv",{params: {page} })
     return response.data.results
 }
 export const getCategories=async (type)=>{
@@ -45,9 +45,24 @@ export const getSelectedMediaByCateg = async (type,selected_ctg,page = 1) => {
 
 ///search/${type}?query=${searchText}&page=${page}
 
-export const getMedia=async (type,searchText)=>{
-    const response=await api.get(`/search/${type}?query=${searchText}`)
+export const getMedia=async (type,searchText,page)=>{
+    const response=await api.get(`/search/${type}?query=${searchText}`, {params: {page} })
     return response.data.results
+}
+//trailer:
+//const urlVideos=`https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${import.meta.env.VITE_API_KEY}`;
+export const getTrailer=async (type,id)=>{
+    const response=await api.get(`/${type}/${id}/videos`)
+    return response.data.results
+}
+
+//színészek:
+//    const urlCredits=`https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${import.meta.env.VITE_API_KEY}`;
+export const getCredits=async (type,id)=>{
+    console.log(type,id);
+    
+    const response=await api.get(`/${type}/${id}/credits`)
+    return response.data.cast
 }
 
 ////////////////////////////////////////////
