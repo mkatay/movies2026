@@ -7,15 +7,15 @@ import { TfiYoutube } from "react-icons/tfi";
 import { Carousel } from './Carousel';
 
 
-export const MyModal = ({isOpen,setIsOpen,media}) => {
+export const MyModal = ({isOpen,setIsOpen,media,type}) => {
     const [trailer, setTrailer] = useState(null)
     const [credits, setCredits] = useState(null)
 
     //console.log(media);
 
     useEffect(() => {
-        getTrailer(media.media_type,media.id).then(setTrailer)   
-        getCredits(media.media_type,media.id).then(setCredits)
+        getTrailer(media.media_type || type,media.id).then(setTrailer)   
+        getCredits(media.media_type || type,media.id).then(setCredits)
     }, [])
 
 trailer && console.log(trailer[0]);
@@ -36,7 +36,7 @@ credits && console.log(credits);
 
                 {credits && <Carousel credits={credits.slice(0,8)}/>}
 
-                {trailer && <a className="link link-info text-3xl w-full text-left" href={`https://www.youtube.com/watch?v=${trailer[0].key}`} ><TfiYoutube/></a>}
+                {trailer && trailer[0] && <a className="link link-info text-3xl w-full text-left" href={`https://www.youtube.com/watch?v=${trailer[0].key}`} ><TfiYoutube/></a>}
                 
            
                 <div className="modal-action absolute top-0 right-1">

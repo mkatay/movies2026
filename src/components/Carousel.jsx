@@ -5,6 +5,7 @@ const AliceCarousel = AliceCarouselImport.default ?? AliceCarouselImport
 import { img_300 } from '../utils'
 
 export const Carousel = ({ credits }) => {
+console.log(credits);
 
   const items = credits.map(obj => (
     <div key={obj.id} className="px-2">

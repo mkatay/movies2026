@@ -1,7 +1,8 @@
+
 import React from "react";
 
 export const Pagination = ({setPage,page,maxPage=10}) => {
-    const numbers = [...Array(maxPage)].map((_, i) => i + 1)
+    const numbers = [...Array(maxPage>10 ? 10 : maxPage)].map((_, i) => i + 1)
   return (
     <div className="flex justify-center p-4">
       <div className="join">
@@ -11,7 +12,7 @@ export const Pagination = ({setPage,page,maxPage=10}) => {
                 onClick={()=>setPage(nr)}
                 >
                 {nr}
-            </button>   
+            </button>    
         )}
        
       </div>

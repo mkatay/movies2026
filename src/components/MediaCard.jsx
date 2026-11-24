@@ -25,7 +25,7 @@ export const MediaCard = ({media,type}) => {
                 </div>
             </div>
         </div>
-        {isOpen && <MyModal {...{isOpen,setIsOpen,media}}/>}
+        {isOpen && <MyModal {...{type,isOpen,setIsOpen,media}}/>}
 </>
 
   )

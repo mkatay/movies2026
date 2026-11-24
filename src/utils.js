@@ -46,8 +46,8 @@ export const getSelectedMediaByCateg = async (type,selected_ctg,page = 1) => {
 ///search/${type}?query=${searchText}&page=${page}
 
 export const getMedia=async (type,searchText,page)=>{
-    const response=await api.get(`/search/${type}?query=${searchText}`, {params: {page} })
-    return response.data.results
+    const response=await api.get(`/search/${type}?query=${searchText}`,{params:{page}})
+    return response.data
 }
 //trailer:
 //const urlVideos=`https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${import.meta.env.VITE_API_KEY}`;

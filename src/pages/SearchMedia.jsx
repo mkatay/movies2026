@@ -15,33 +15,31 @@ export const SearchMedia = () => {
   const [page, setPage] = useState(1)
   const [maxPage, setMaxPage] = useState(1)
 
-  
-  media && console.log(media);
-  
- const handleSearch=()=>{
-   getMedia(type,searchText, page).then(setMedia)
+  const handleSearch=()=>{
+      setMedia(null)
+      if(searchText.trim().length==0) return
+        console.log('ok');
+        getMedia(type,searchText,page).then((data)=>{
+          setMedia(data.results)
+          setMaxPage(data.total_pages)
+        })
+        
 
- }
- useEffect(() => {
-  if(media)
-    setMaxPage(Math.ceil(media.length/10))
- }, [media])
-   
+  }
 
- useEffect(() => {
-  if(!media) return
-      getMedia(type,searchText, page).then(setMedia)
-      window.scrollTo({top: 0, behavior: "smooth"})
-       }, [page])
-  
+   useEffect(() => {
+       getMedia(type,searchText,page).then((data)=>{
+            setMedia(data.results)
+            setMaxPage(data.total_pages)
+          })
+    }, [page])
+    
   return (
     <div >
       <Filter type={type} setType={setType}/>
       <SearchBar searchText={searchText} setSearchText={setSearchText} handleSearch={handleSearch}/>
-    
-        {media && <MediaList  data={media} type={type} />}
-
-      {media && <Pagination {...{setPage,page,maxPage}}/>}
+      {media && <MediaList  data={media} type={type} />}
+      {media && media.length>0 &&  <Pagination {...{setPage,page,maxPage}}/>}
     </div>
   )
 }

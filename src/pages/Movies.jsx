@@ -14,6 +14,8 @@ const [page, setPage] = useState(1)
 
     console.log(selectedCateg);
 
+
+    
     useEffect(() => {
       setPage(1)
       getSelectedMediaByCateg('movie',selectedCateg.join(','),page).then(setMovies)  
